@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Lost">
+	<insert id="insertLost">
+		insert into lost (category, name, place, find, detail)
+		values
+		(#{category}, #{name}, #{place}, #{find}, #{detail})
+	</insert>
+	<update id="updateLost">
+		update lost
+		set category=#{category}, name=#{name}, place=#{place}, find=#{find}, detail=#{detail}
+		where seq=#{seq}
+	</update>
+	<delete id="deleteLost">
+		delete from lost where seq=#{seq}
+	</delete>
+	<select id="getLost" resultType="lost">
+		select * from lost where seq=#{seq}
+	</select>
+	<select id="getLostList" resultType="lost">
+		select * from lost order by seq desc
+	</select>
+</mapper>
